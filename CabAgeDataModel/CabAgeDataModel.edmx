@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CabAgeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeLocation">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="GeoLocation" Type="geography" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="300" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mobile" Type="bigint" />
+        </EntityType>
+        <EntityType Name="EmployeeSurveyResults">
+          <Key>
+            <PropertyRef Name="EmployeeSurveyID" />
+          </Key>
+          <Property Name="EmployeeSurveyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__EmployeeS__Categ__4316F928">
+          <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="1" />
+          <End Role="EmployeeSurveyResults" Type="Self.EmployeeSurveyResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeSurveyResults">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__Emplo__440B1D61">
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="1" />
+          <End Role="EmployeeSurveyResults" Type="Self.EmployeeSurveyResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeSurveyResults">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeLocation_EmployeeMaster">
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="1" />
+          <End Role="EmployeeLocation" Type="Self.EmployeeLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeLocation">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CabAgeModelStoreContainer">
+          <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeLocation" EntityType="Self.EmployeeLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSurveyResults" EntityType="Self.EmployeeSurveyResults" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeS__Categ__4316F928" Association="Self.FK__EmployeeS__Categ__4316F928">
+            <End Role="CategoryMaster" EntitySet="CategoryMaster" />
+            <End Role="EmployeeSurveyResults" EntitySet="EmployeeSurveyResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Emplo__440B1D61" Association="Self.FK__EmployeeS__Emplo__440B1D61">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+            <End Role="EmployeeSurveyResults" EntitySet="EmployeeSurveyResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLocation_EmployeeMaster" Association="Self.FK_EmployeeLocation_EmployeeMaster">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+            <End Role="EmployeeLocation" EntitySet="EmployeeLocation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CabAgeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CabAgeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryMasters" EntityType="CabAgeModel.CategoryMaster" />
+          <EntitySet Name="EmployeeLocations" EntityType="CabAgeModel.EmployeeLocation" />
+          <EntitySet Name="EmployeeMasters" EntityType="CabAgeModel.EmployeeMaster" />
+          <AssociationSet Name="FK_EmployeeLocation_EmployeeMaster" Association="CabAgeModel.FK_EmployeeLocation_EmployeeMaster">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+            <End Role="EmployeeLocation" EntitySet="EmployeeLocations" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeSurveyResults" EntityType="CabAgeModel.EmployeeSurveyResult" />
+          <AssociationSet Name="FK__EmployeeS__Categ__4316F928" Association="CabAgeModel.FK__EmployeeS__Categ__4316F928">
+            <End Role="CategoryMaster" EntitySet="CategoryMasters" />
+            <End Role="EmployeeSurveyResult" EntitySet="EmployeeSurveyResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Emplo__440B1D61" Association="CabAgeModel.FK__EmployeeS__Emplo__440B1D61">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+            <End Role="EmployeeSurveyResult" EntitySet="EmployeeSurveyResults" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="EmployeeSurveyResults" Relationship="CabAgeModel.FK__EmployeeS__Categ__4316F928" FromRole="CategoryMaster" ToRole="EmployeeSurveyResult" />
+        </EntityType>
+        <EntityType Name="EmployeeLocation">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="GeoLocation" Type="Geography" />
+          <NavigationProperty Name="EmployeeMaster" Relationship="CabAgeModel.FK_EmployeeLocation_EmployeeMaster" FromRole="EmployeeLocation" ToRole="EmployeeMaster" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="300" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Int64" />
+          <NavigationProperty Name="EmployeeLocations" Relationship="CabAgeModel.FK_EmployeeLocation_EmployeeMaster" FromRole="EmployeeMaster" ToRole="EmployeeLocation" />
+          <NavigationProperty Name="EmployeeSurveyResults" Relationship="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" FromRole="EmployeeMaster" ToRole="EmployeeSurveyResult" />
+        </EntityType>
+        <Association Name="FK_EmployeeLocation_EmployeeMaster">
+          <End Type="CabAgeModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="1" />
+          <End Type="CabAgeModel.EmployeeLocation" Role="EmployeeLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeLocation">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmployeeSurveyResult">
+          <Key>
+            <PropertyRef Name="EmployeeSurveyID" />
+          </Key>
+          <Property Name="EmployeeSurveyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CategoryMaster" Relationship="CabAgeModel.FK__EmployeeS__Categ__4316F928" FromRole="EmployeeSurveyResult" ToRole="CategoryMaster" />
+          <NavigationProperty Name="EmployeeMaster" Relationship="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" FromRole="EmployeeSurveyResult" ToRole="EmployeeMaster" />
+        </EntityType>
+        <Association Name="FK__EmployeeS__Categ__4316F928">
+          <End Type="CabAgeModel.CategoryMaster" Role="CategoryMaster" Multiplicity="1" />
+          <End Type="CabAgeModel.EmployeeSurveyResult" Role="EmployeeSurveyResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeSurveyResult">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__Emplo__440B1D61">
+          <End Type="CabAgeModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="1" />
+          <End Type="CabAgeModel.EmployeeSurveyResult" Role="EmployeeSurveyResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeSurveyResult">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CabAgeModelStoreContainer" CdmEntityContainer="CabAgeEntities">
+          <EntitySetMapping Name="CategoryMasters">
+            <EntityTypeMapping TypeName="CabAgeModel.CategoryMaster">
+              <MappingFragment StoreEntitySet="CategoryMaster">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeLocations">
+            <EntityTypeMapping TypeName="CabAgeModel.EmployeeLocation">
+              <MappingFragment StoreEntitySet="EmployeeLocation">
+                <ScalarProperty Name="GeoLocation" ColumnName="GeoLocation" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeMasters">
+            <EntityTypeMapping TypeName="CabAgeModel.EmployeeMaster">
+              <MappingFragment StoreEntitySet="EmployeeMaster">
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSurveyResults">
+            <EntityTypeMapping TypeName="CabAgeModel.EmployeeSurveyResult">
+              <MappingFragment StoreEntitySet="EmployeeSurveyResults">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeSurveyID" ColumnName="EmployeeSurveyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

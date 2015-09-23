@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7cf54b74b45541118316514500e520ec" Name="Diagram1">
+        <EntityTypeShape EntityType="CabAgeModel.CategoryMaster" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CabAgeModel.EmployeeLocation" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="CabAgeModel.EmployeeMaster" Width="1.5" PointX="0.75" PointY="3.5" />
+        <AssociationConnector Association="CabAgeModel.FK_EmployeeLocation_EmployeeMaster" />
+        <EntityTypeShape EntityType="CabAgeModel.EmployeeSurveyResult" Width="1.5" PointX="3" PointY="2" />
+        <AssociationConnector Association="CabAgeModel.FK__EmployeeS__Categ__4316F928" />
+        <AssociationConnector Association="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
