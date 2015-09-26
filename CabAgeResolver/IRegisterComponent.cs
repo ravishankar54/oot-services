@@ -15,7 +15,7 @@ namespace CabAgeResolver
         /// <typeparam name="TTo"></typeparam>
         /// <param name="withInterception"></param>
         void RegisterType<TFrom, TTo>(bool withInterception = false) where TTo : TFrom;
- 
+
         /// <summary>
         /// Register type with container controlled life time manager
         /// </summary>
@@ -25,6 +25,6 @@ namespace CabAgeResolver
         void RegisterTypeWithControlledLifeTime<TFrom, TTo>(bool withInterception = false) where TTo : TFrom;
     }
 
-    }
+}
 
 

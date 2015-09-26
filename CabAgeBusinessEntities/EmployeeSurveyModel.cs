@@ -13,6 +13,7 @@ namespace CabAgeBusinessEntities
         public int EmployeeID { get; set; }
         public int CategoryID { get; set; }
         public int Rating { get; set; }
+        public string Comments { get; set; }
         public System.DateTime CreatedDate { get; set; }
 
         public virtual CategoryMasterModel CategoryMaster { get; set; }

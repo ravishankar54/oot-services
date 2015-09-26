@@ -38,8 +38,9 @@
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
         </EntityType>
-        <Association Name="FK__EmployeeS__Categ__4316F928">
+        <Association Name="FK__EmployeeS__Categ__173876EA">
           <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="1" />
           <End Role="EmployeeSurveyResults" Type="Self.EmployeeSurveyResults" Multiplicity="*" />
           <ReferentialConstraint>
@@ -51,7 +52,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EmployeeS__Emplo__440B1D61">
+        <Association Name="FK__EmployeeS__Emplo__182C9B23">
           <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="1" />
           <End Role="EmployeeSurveyResults" Type="Self.EmployeeSurveyResults" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,11 +81,11 @@
           <EntitySet Name="EmployeeLocation" EntityType="Self.EmployeeLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeSurveyResults" EntityType="Self.EmployeeSurveyResults" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__EmployeeS__Categ__4316F928" Association="Self.FK__EmployeeS__Categ__4316F928">
+          <AssociationSet Name="FK__EmployeeS__Categ__173876EA" Association="Self.FK__EmployeeS__Categ__173876EA">
             <End Role="CategoryMaster" EntitySet="CategoryMaster" />
             <End Role="EmployeeSurveyResults" EntitySet="EmployeeSurveyResults" />
           </AssociationSet>
-          <AssociationSet Name="FK__EmployeeS__Emplo__440B1D61" Association="Self.FK__EmployeeS__Emplo__440B1D61">
+          <AssociationSet Name="FK__EmployeeS__Emplo__182C9B23" Association="Self.FK__EmployeeS__Emplo__182C9B23">
             <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
             <End Role="EmployeeSurveyResults" EntitySet="EmployeeSurveyResults" />
           </AssociationSet>
@@ -166,6 +167,7 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CategoryMaster" Relationship="CabAgeModel.FK__EmployeeS__Categ__4316F928" FromRole="EmployeeSurveyResult" ToRole="CategoryMaster" />
           <NavigationProperty Name="EmployeeMaster" Relationship="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" FromRole="EmployeeSurveyResult" ToRole="EmployeeMaster" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__EmployeeS__Categ__4316F928">
           <End Type="CabAgeModel.CategoryMaster" Role="CategoryMaster" Multiplicity="1" />
@@ -227,6 +229,7 @@
           <EntitySetMapping Name="EmployeeSurveyResults">
             <EntityTypeMapping TypeName="CabAgeModel.EmployeeSurveyResult">
               <MappingFragment StoreEntitySet="EmployeeSurveyResults">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />

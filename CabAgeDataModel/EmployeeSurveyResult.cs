@@ -19,6 +19,7 @@ namespace CabAgeDataModel
         public int CategoryID { get; set; }
         public int Rating { get; set; }
         public System.DateTime CreatedDate { get; set; }
+        public string Comments { get; set; }
     
         public virtual CategoryMaster CategoryMaster { get; set; }
         public virtual EmployeeMaster EmployeeMaster { get; set; }

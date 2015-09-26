@@ -2,7 +2,7 @@ using System.Web.Http;
 using CabAgeBusinessServices.Interfaces;
 using CabAgeBusinessServices.Services;
 using Microsoft.Practices.Unity;
-using Resolver;
+using CabAgeResolver;
 
 namespace CabAgeWebAPI
 {
