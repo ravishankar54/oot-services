@@ -38,7 +38,6 @@
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="Comments" Type="varchar" MaxLength="500" />
         </EntityType>
         <Association Name="FK__EmployeeS__Categ__173876EA">
           <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="1" />
@@ -167,7 +166,6 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CategoryMaster" Relationship="CabAgeModel.FK__EmployeeS__Categ__4316F928" FromRole="EmployeeSurveyResult" ToRole="CategoryMaster" />
           <NavigationProperty Name="EmployeeMaster" Relationship="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" FromRole="EmployeeSurveyResult" ToRole="EmployeeMaster" />
-          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__EmployeeS__Categ__4316F928">
           <End Type="CabAgeModel.CategoryMaster" Role="CategoryMaster" Multiplicity="1" />
@@ -229,7 +227,6 @@
           <EntitySetMapping Name="EmployeeSurveyResults">
             <EntityTypeMapping TypeName="CabAgeModel.EmployeeSurveyResult">
               <MappingFragment StoreEntitySet="EmployeeSurveyResults">
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
