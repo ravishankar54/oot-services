@@ -194,6 +194,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\CategoryMasterController.cs" />
+    <Compile Include="Controllers\EmployeeCommentController.cs" />
     <Compile Include="Controllers\EmployeeLocationController.cs" />
     <Compile Include="Controllers\EmployeeMasterController.cs" />
     <Compile Include="Controllers\EmployeeSurveyController.cs" />

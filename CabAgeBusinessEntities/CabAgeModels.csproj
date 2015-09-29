@@ -52,6 +52,7 @@
     <Compile Include="CategoryMasterModel.cs" />
     <Compile Include="EmployeeLocationModel.cs" />
     <Compile Include="EmployeeMasterModel.cs" />
+    <Compile Include="EmployeeCommentModel.cs" />
     <Compile Include="EmployeeSurveyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

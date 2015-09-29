@@ -18,6 +18,7 @@ namespace CabAgeDataModel
         {
             this.EmployeeLocations = new HashSet<EmployeeLocation>();
             this.EmployeeSurveyResults = new HashSet<EmployeeSurveyResult>();
+            this.EmployeeSurveyComment = new HashSet<EmployeeSurveyComment>();
         }
     
         public int ID { get; set; }
@@ -27,5 +28,6 @@ namespace CabAgeDataModel
     
         public virtual ICollection<EmployeeLocation> EmployeeLocations { get; set; }
         public virtual ICollection<EmployeeSurveyResult> EmployeeSurveyResults { get; set; }
+        public virtual ICollection<EmployeeSurveyComment> EmployeeSurveyComment { get; set; }
     }
 }

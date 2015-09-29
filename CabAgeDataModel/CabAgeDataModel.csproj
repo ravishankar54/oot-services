@@ -76,6 +76,9 @@
     <Compile Include="EmployeeMaster.cs">
       <DependentUpon>CabAgeDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeSurveyComment.cs">
+      <DependentUpon>CabAgeDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeSurveyResult.cs">
       <DependentUpon>CabAgeDataModel.tt</DependentUpon>
     </Compile>

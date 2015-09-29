@@ -14,6 +14,7 @@ namespace CabAgeDataModel.UnitOfWork
         private GenericRepository<EmployeeMaster> employeeMasterRepository;
         private GenericRepository<EmployeeLocation> employeeLocationRepository;
         private GenericRepository<EmployeeSurveyResult> employeeSurveyRepository;
+        private GenericRepository<EmployeeSurveyComment> employeeCommentRepository;
 
         private bool disposed = false;
 
@@ -59,6 +60,14 @@ namespace CabAgeDataModel.UnitOfWork
             }
         }
 
+        public GenericRepository<EmployeeSurveyComment> EmployeeCommentRepository
+        {
+            get
+            {
+                return employeeCommentRepository ??
+                       (employeeCommentRepository = new GenericRepository<EmployeeSurveyComment>(context));
+            }
+        }
 
 
         public void Save()

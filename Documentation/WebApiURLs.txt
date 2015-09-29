@@ -77,11 +77,30 @@
 
     Description    :-  POST method to create an Employee Location.
 
+	------------------EMPLOYEE MASTER URLs---------------------
+			
+14) employeescomments/getall
+   
+   Description   : - Returns all employees comments
+   
+15) employeecomment/employeecomment/{id?}
+    
+   Description   : - Returns a particular employee comment based on EmployeeID (always UNIQUE)
+   Eg            : - employeecomment/employeecomment/4733
 
-    	
+16) employeecomment/create
+   
+   Description   : - Creates a new Employee Comment. Expects 	EmployeeCommentBusinessEntity.
 
-    	
-							
+17) employeecomment/update
+   
+   Description   : - Updates a new Employee Comment. Expects 	EmployeeCommentBusinessEntity.
+
+18) employeecomment/iswritten/{id?}
+
+   Description   : - Returns whether an employee comment is written.
+   Eg            :-  employeecomment/iswritten/4733
+   Sample Result :- true or false		
 
    
    

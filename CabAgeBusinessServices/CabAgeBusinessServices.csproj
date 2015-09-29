@@ -72,10 +72,12 @@
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="Interfaces\ICategoryMasterService.cs" />
     <Compile Include="Interfaces\IEmployeeLocationService.cs" />
+    <Compile Include="Interfaces\IEmployeeCommentService.cs" />
     <Compile Include="Interfaces\IEmployeeMasterService.cs" />
     <Compile Include="Interfaces\IEmployeeSurveyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoryMasterService.cs" />
+    <Compile Include="Services\EmployeeCommentService.cs" />
     <Compile Include="Services\EmployeeLocationService.cs" />
     <Compile Include="Services\EmployeeMasterService.cs" />
     <Compile Include="Services\EmployeSurveyService.cs" />

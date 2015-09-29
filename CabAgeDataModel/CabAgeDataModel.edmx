@@ -29,6 +29,15 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Mobile" Type="bigint" />
         </EntityType>
+        <EntityType Name="EmployeeSurveyComment">
+          <Key>
+            <PropertyRef Name="EmployeeCommentID" />
+          </Key>
+          <Property Name="EmployeeCommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="EmployeeSurveyResults">
           <Key>
             <PropertyRef Name="EmployeeSurveyID" />
@@ -63,6 +72,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__EmployeeS__Emplo__29572725">
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="1" />
+          <End Role="EmployeeSurveyComment" Type="Self.EmployeeSurveyComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeSurveyComment">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeLocation_EmployeeMaster">
           <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="1" />
           <End Role="EmployeeLocation" Type="Self.EmployeeLocation" Multiplicity="*" />
@@ -79,6 +100,7 @@
           <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeLocation" EntityType="Self.EmployeeLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSurveyComment" EntityType="Self.EmployeeSurveyComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeSurveyResults" EntityType="Self.EmployeeSurveyResults" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__EmployeeS__Categ__173876EA" Association="Self.FK__EmployeeS__Categ__173876EA">
             <End Role="CategoryMaster" EntitySet="CategoryMaster" />
@@ -87,6 +109,10 @@
           <AssociationSet Name="FK__EmployeeS__Emplo__182C9B23" Association="Self.FK__EmployeeS__Emplo__182C9B23">
             <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
             <End Role="EmployeeSurveyResults" EntitySet="EmployeeSurveyResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Emplo__29572725" Association="Self.FK__EmployeeS__Emplo__29572725">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+            <End Role="EmployeeSurveyComment" EntitySet="EmployeeSurveyComment" />
           </AssociationSet>
           <AssociationSet Name="FK_EmployeeLocation_EmployeeMaster" Association="Self.FK_EmployeeLocation_EmployeeMaster">
             <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
@@ -113,6 +139,11 @@
           <AssociationSet Name="FK__EmployeeS__Emplo__440B1D61" Association="CabAgeModel.FK__EmployeeS__Emplo__440B1D61">
             <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
             <End Role="EmployeeSurveyResult" EntitySet="EmployeeSurveyResults" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeSurveyComment" EntityType="CabAgeModel.EmployeeSurveyComment" />
+          <AssociationSet Name="FK__EmployeeS__Emplo__29572725" Association="CabAgeModel.FK__EmployeeS__Emplo__29572725">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+            <End Role="EmployeeSurveyComment" EntitySet="EmployeeSurveyComment" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CategoryMaster">
@@ -142,6 +173,7 @@
           <Property Name="Mobile" Type="Int64" />
           <NavigationProperty Name="EmployeeLocations" Relationship="CabAgeModel.FK_EmployeeLocation_EmployeeMaster" FromRole="EmployeeMaster" ToRole="EmployeeLocation" />
           <NavigationProperty Name="EmployeeSurveyResults" Relationship="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" FromRole="EmployeeMaster" ToRole="EmployeeSurveyResult" />
+          <NavigationProperty Name="EmployeeSurveyComment" Relationship="CabAgeModel.FK__EmployeeS__Emplo__29572725" FromRole="EmployeeMaster" ToRole="EmployeeSurveyComment" />
         </EntityType>
         <Association Name="FK_EmployeeLocation_EmployeeMaster">
           <End Type="CabAgeModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="1" />
@@ -191,6 +223,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EmployeeSurveyComment">
+          <Key>
+            <PropertyRef Name="EmployeeCommentID" />
+          </Key>
+          <Property Name="EmployeeCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EmployeeMaster" Relationship="CabAgeModel.FK__EmployeeS__Emplo__29572725" FromRole="EmployeeSurveyComment" ToRole="EmployeeMaster" />
+        </EntityType>
+        <Association Name="FK__EmployeeS__Emplo__29572725">
+          <End Type="CabAgeModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="1" />
+          <End Type="CabAgeModel.EmployeeSurveyComment" Role="EmployeeSurveyComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeSurveyComment">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -235,6 +289,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSurveyComment">
+            <EntityTypeMapping TypeName="CabAgeModel.EmployeeSurveyComment">
+              <MappingFragment StoreEntitySet="EmployeeSurveyComment">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeCommentID" ColumnName="EmployeeCommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -249,7 +313,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

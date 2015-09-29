@@ -19,6 +19,7 @@ namespace CabAgeBusinessServices
             registerComponent.RegisterType<IEmployeeMasterService,EmployeeMasterService>();
             registerComponent.RegisterType<IEmployeeLocationService,EmployeeLocationService>();
             registerComponent.RegisterType<IEmployeeSurveyService, EmployeSurveyService>();
+            registerComponent.RegisterType<IEmployeeCommentService, EmployeeCommentService>();
         }
     }
 }

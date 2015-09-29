@@ -5,13 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7cf54b74b45541118316514500e520ec" Name="Diagram1">
-        <EntityTypeShape EntityType="CabAgeModel.CategoryMaster" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="CabAgeModel.EmployeeLocation" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="CabAgeModel.CategoryMaster" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CabAgeModel.EmployeeLocation" Width="1.5" PointX="5.25" PointY="3" />
         <EntityTypeShape EntityType="CabAgeModel.EmployeeMaster" Width="1.5" PointX="0.75" PointY="3.5" />
         <AssociationConnector Association="CabAgeModel.FK_EmployeeLocation_EmployeeMaster" />
-        <EntityTypeShape EntityType="CabAgeModel.EmployeeSurveyResult" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="CabAgeModel.EmployeeSurveyResult" Width="1.5" PointX="3.25" PointY="1" />
         <AssociationConnector Association="CabAgeModel.FK__EmployeeS__Categ__4316F928" />
         <AssociationConnector Association="CabAgeModel.FK__EmployeeS__Emplo__440B1D61" />
+        <EntityTypeShape EntityType="CabAgeModel.EmployeeSurveyComment" Width="1.5" PointX="5.25" PointY="5.375" />
+        <AssociationConnector Association="CabAgeModel.FK__EmployeeS__Emplo__29572725" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
