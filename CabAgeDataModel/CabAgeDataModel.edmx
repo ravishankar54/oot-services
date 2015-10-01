@@ -229,7 +229,7 @@
           </Key>
           <Property Name="EmployeeCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="160" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="EmployeeMaster" Relationship="CabAgeModel.FK__EmployeeS__Emplo__29572725" FromRole="EmployeeSurveyComment" ToRole="EmployeeMaster" />
         </EntityType>
